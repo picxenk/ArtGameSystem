@@ -5,12 +5,14 @@ let canvasHeight = 400;
 let walls;
 let balls;
 let left, bottom;
+let ani;
 
 function setup() {
   canvas = createCanvas(canvasWidth, canvasHeight);
   canvas.position(windowWidth/2 - canvasWidth/2, 20);
   // noCursor();
 
+  ani = loadAnimation('assets/001.png', 'assets/004.png');
   balls = new Group();
   walls = new Group();
   left = createSprite(0, 200, 10, 400);
@@ -32,8 +34,12 @@ function draw() {
   background(30);
 
   for (let i=0; i<balls.length; i++) {
+    // balls[i].debug = true;
+
     balls[i].bounce(bottom);
     balls[i].bounce(left, killed);
+
+
 
   }
   drawSprites();
@@ -43,6 +49,8 @@ function mousePressed() {
   var s = createSprite(mouseX, mouseY, 30, 30);
   s.velocity.x = random(-5, 5);
   s.velocity.y = random(-5, 5);
+  s.addAnimation('aa', ani);
+  s.setCollider('circle', 0, 0, 35, 35);
   balls.add(s);
 }
 
