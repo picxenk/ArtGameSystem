@@ -9,7 +9,7 @@ function setup() {
 }
 
 function draw() {
-  background(0);
+  background(255, 0, 0);
   drawSprites();
 }
 
