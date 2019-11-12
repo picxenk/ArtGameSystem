@@ -6,10 +6,15 @@ let canvasHeight = 400;
 function setup() {
   canvas = createCanvas(canvasWidth, canvasHeight);
   canvas.position(windowWidth/2 - canvasWidth/2, 20);
-  noCursor(); // no show cursor
 }
 
 function draw() {
-  background(30);
-  ellipse(mouseX, mouseY, 100, 100);
+  background(0);
+  drawSprites();
+}
+
+function mousePressed() {
+  let s = createSprite(mouseX, mouseY, 30, 30);
+  s.velocity.x = random(-5, 5);
+  s.velocity.y = random(-5, 5);
 }
